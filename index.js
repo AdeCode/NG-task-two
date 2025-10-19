@@ -1,11 +1,14 @@
 const express = require("express");
 const app = express();
 require("dotenv").config();
+const cors = require("cors");
 
 const routes = require('./routes')
 
 // Middleware (optional)
 app.use(express.json());
+
+app.use(cors());
 
 // Example route
 app.get("/", (req, res) => {
