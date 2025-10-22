@@ -60,7 +60,7 @@ Ensure your package.json contains the following scripts:
 
 5️⃣ Run JSON Server (for database)
 
-npx json-server --watch db.json --port 6000
+npx json-server --watch db/db.json --port 6000
 
 This runs a mock API at: http://localhost:6000/stringData
 
