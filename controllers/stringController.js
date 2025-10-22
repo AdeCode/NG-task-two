@@ -1,9 +1,12 @@
 const { analyzeString } = require("../utils/helper");
 const axios = require("axios");
 
+const JSON_SERVER_BASE_URL =
+  process.env.JSON_SERVER_BASE_URL || `http://localhost:${process.env.PORT || 6000}`;
+
 const handelStringAnalysis = async (req, res) => {
     const crypto = require("crypto");
-
+    console.log('curr url:',JSON_SERVER_BASE_URL)
     try {
         const id = crypto.randomBytes(16).toString("hex");
         res.setHeader("Content-Type", "application/json");
@@ -27,7 +30,7 @@ const handelStringAnalysis = async (req, res) => {
 
         // Check if string already exists
         const existing = await axios.get(
-            `http://localhost:6000/stringData?value=${encodeURIComponent(currentString)}`
+            `${JSON_SERVER_BASE_URL}/?value=${encodeURIComponent(currentString)}`
         );
 
         if (existing.data && existing.data.length > 0) {
@@ -57,7 +60,7 @@ const handelStringAnalysis = async (req, res) => {
         }
 
         const addString = async () => {
-            const res = await axios.post("http://localhost:6000/stringData", finalResponse);
+            const res = await axios.post(`${JSON_SERVER_BASE_URL}`, finalResponse);
             console.log('added', res.data)
         }
         addString()
@@ -90,7 +93,7 @@ const handleFetchString = async (req, res) => {
         }
 
         const response = await axios.get(
-            `http://localhost:6000/stringData?value=${encodeURIComponent(string_value)}`
+            `${JSON_SERVER_BASE_URL}?value=${encodeURIComponent(string_value)}`
         );
 
         const data = response.data;
@@ -127,7 +130,7 @@ const handleFilterStrings = async (req, res) => {
         } = req.query;
 
         // Fetch all strings from the JSON DB
-        const response = await axios.get("http://localhost:6000/stringData");
+        const response = await axios.get(`${JSON_SERVER_BASE_URL}`);
         const allStrings = response.data;
 
         if (!Array.isArray(allStrings) || allStrings.length === 0) {
@@ -207,7 +210,7 @@ const handleNaturalLanguageFilter = async (req, res) => {
         const q = rawQuery.toLowerCase();
 
         // fetch DB
-        const response = await axios.get("http://localhost:6000/stringData");
+        const response = await axios.get(`${JSON_SERVER_BASE_URL}`);
         const allStrings = Array.isArray(response.data) ? response.data : [];
 
         // Parseers / detectors
@@ -431,7 +434,7 @@ const handleDeleteString = async (req, res) => {
 
     try {
         // Fetch all data from JSON Server
-        const { data } = await axios.get("http://localhost:6000/stringData");
+        const { data } = await axios.get(`${JSON_SERVER_BASE_URL}`);
 
         // Find the string that matches exactly
         const stringItem = data.find(item => item.value === stringValue);
@@ -446,7 +449,7 @@ const handleDeleteString = async (req, res) => {
         }
 
         // Delete the string by its ID
-        await axios.delete(`http://localhost:6000/stringData/${stringItem.id}`);
+        await axios.delete(`${JSON_SERVER_BASE_URL}/${stringItem.id}`);
 
         //Success — no content
         return res.status(204).send(); // Empty response body
