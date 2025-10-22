@@ -1,6 +1,6 @@
 const express = require('express')
 const { fetchProfile } = require('../controllers/profileController')
-const { handelStringAnalysis, handleFetchString, handleFilterStrings, handleNaturalLanguageFilter, handleDeleteString } = require('../controllers/stringController')
+const { handelStringAnalysis, handleFetchString, handleFilterStrings, handleNaturalLanguageFilter, handleDeleteString, getBase } = require('../controllers/stringController')
 const router = express.Router()
 
 
@@ -11,5 +11,7 @@ router.get('/strings', handleFilterStrings)
 router.get('/strings/:string_value', handleFetchString)
 router.get("/strings/filter-by-natural-language", handleNaturalLanguageFilter)
 router.delete("/strings/:string_value", handleDeleteString)
+router.get("/strings/test", getBase)
+
 
 module.exports = router

@@ -14,7 +14,7 @@ const handelStringAnalysis = async (req, res) => {
         const currentString = req.body.value
 
         if (!req.body || currentString === undefined || currentString === null) {
-            return res.status(400).json({
+            return res.status(409).json({
                 success: false,
                 message: '400 Bad Request: Invalid request body or missing "value" field',
                 timestamp: new Date().toISOString(),
@@ -76,6 +76,13 @@ const handelStringAnalysis = async (req, res) => {
             timestamp: new Date().toISOString(),
         });
     }
+}
+
+const getBase = async(req,res) => {
+    return res.status(201).json({
+        message: 'success ooo',
+        url:JSON_SERVER_BASE_URL
+    })
 }
 
 const handleFetchString = async (req, res) => {
@@ -471,5 +478,6 @@ module.exports = {
     handleFetchString,
     handleFilterStrings,
     handleNaturalLanguageFilter,
-    handleDeleteString
+    handleDeleteString,
+    getBase
 }
