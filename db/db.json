@@ -1,0 +1,97 @@
+{
+  "stringData": [
+    {
+      "id": "41a4fb2478ed91645f595a8a130f53b0",
+      "value": "let's get started",
+      "properties": {
+        "length": 17,
+        "is_palindrome": false,
+        "unique_characters": 12,
+        "word_count": 3,
+        "character_frequency_map": {
+          "l": 1,
+          "e": 3,
+          "t": 4,
+          "'": 1,
+          "s": 2,
+          " ": 2,
+          "g": 1,
+          "a": 1,
+          "r": 1,
+          "d": 1
+        },
+        "sha256_hash": "68c1ddf160901759c676e0eba0007b43fdb7f622e7b85665c556ad9845ce7e6e"
+      },
+      "created_at": "2025-10-22T16:36:16.362Z"
+    },
+    {
+      "id": "de2067425926bf4fe1f10dcd56879e8a",
+      "value": "commander let me execute him now *",
+      "properties": {
+        "length": 34,
+        "is_palindrome": false,
+        "unique_characters": 12,
+        "word_count": 7,
+        "character_frequency_map": {
+          "c": 2,
+          "o": 2,
+          "m": 4,
+          "a": 1,
+          "n": 2,
+          "d": 1,
+          "e": 6,
+          "r": 1,
+          " ": 6,
+          "l": 1,
+          "t": 2,
+          "x": 1,
+          "u": 1,
+          "h": 1,
+          "i": 1,
+          "w": 1,
+          "*": 1
+        },
+        "sha256_hash": "e88b3f0d7edfee522f64d22bd78d98acd8f10d08d43397468f2da8fa83bcc9e9"
+      },
+      "created_at": "2025-10-22T16:36:55.212Z"
+    },
+    {
+      "id": "80548c8cbdde688cb7918424851460d0",
+      "value": "pap",
+      "properties": {
+        "length": 3,
+        "is_palindrome": true,
+        "unique_characters": 12,
+        "word_count": 1,
+        "character_frequency_map": {
+          "p": 2,
+          "a": 1
+        },
+        "sha256_hash": "4f4ddb493f6bafe24041b80234d197ca6ee40a397c05448cd4064c82c71c05db"
+      },
+      "created_at": "2025-10-22T16:37:02.239Z"
+    },
+    {
+      "id": "16f3dc2a861975235d3bb03235d07955",
+      "value": "welcome home",
+      "properties": {
+        "length": 12,
+        "is_palindrome": false,
+        "unique_characters": 12,
+        "word_count": 2,
+        "character_frequency_map": {
+          "w": 1,
+          "e": 3,
+          "l": 1,
+          "c": 1,
+          "o": 2,
+          "m": 2,
+          " ": 1,
+          "h": 1
+        },
+        "sha256_hash": "fa03720d52e9dfe38165ecffecc2c97d7390ce6ac25e7b071d969632aeac50d8"
+      },
+      "created_at": "2025-10-22T17:44:13.587Z"
+    }
+  ]
+}
