@@ -1,15 +1,24 @@
-# Node.js Express Profile API with Cat Facts
+# Node.js Express String Analysis API
 
-A simple Node.js + Express API that returns a dynamic profile along with a random cat fact fetched from [https://catfact.ninja/fact](https://catfact.ninja/fact).
+A Node.js + Express + JSON Server project that analyzes strings, stores their properties, and allows advanced querying — including natural language filters.
 
 ---
 
 ## Features
-- Node.js + Express backend
-- Fetches random cat facts from an external API
-- Returns JSON responses with timestamps
-- Environment variable support using `.env`
-- Ready for Railway deployment
+- Create string and store in the db
+- Query strings
+- Analyze strings for:
+- Length (including spaces and punctuation)
+- Word count
+- Unique characters
+- Character frequency map
+- SHA-256 hash
+- Palindrome check (case-insensitive)
+- Store and retrieve analyzed strings in a JSON database
+- Prevent duplicates with conflict detection
+- Filter by multiple query parameters or natural language (e.g. “all single word palindromic strings”)
+- Delete stored strings
+- Uses json-server as a lightweight database
 
 ---
 
@@ -18,8 +27,14 @@ A simple Node.js + Express API that returns a dynamic profile along with a rando
 - **Express.js**
 - **Dotenv** (for environment variables)
 - **Nodemon** (for live development reload)
+- **Axios** (HTTP client)
+- **JSON Server** (mock database)
+- **Crypto** (for unique IDs and SHA-256 hash)
+- **Custom validators**
 
 ---
+
+
 
 ## Installation & Local Setup
 
@@ -43,20 +58,28 @@ Ensure your package.json contains the following scripts:
   "dev": "nodemon index.js"
 }
 
-5️⃣ Run the application
+5️⃣ Run JSON Server (for database)
+
+npx json-server --watch db.json --port 6000
+
+This runs a mock API at: http://localhost:6000/stringData
+
+6 Run the application
 npm run dev
 
 Open your browser or API client (like Postman) and visit:
-http://localhost:3000/me
+http://localhost:5000/stringData
 
-You should see a response like:
+POST API to post new string: http://localhost:5000/strings
+Request body =
 {
-    "status":"success",
-    "user":{
-        "email":"codeadex@gmail.com",
-        "name":"Agoro Habeeb Adekorede",
-        "stack":"Node.js/Express"
-    },
-    "timestamp":"2025-10-19T09:42:56.336Z",
-    "fact":"It may take as long as 2 weeks for a kitten to be able to hear well.  Their eyes usually open between 7 and 10 days, but sometimes it happens in as little as 2 days."
+  "value": "string to analyze"
 }
+
+
+API to get all records from the db: http://localhost:5000/strings
+API to fetch string by string value: http://localhost:5000/strings/:string_value
+API to filter string by natural language: http://localhost:5000/strings/filter-by-natural-language
+API to delete string by string value: http://localhost:5000/strings/:string_value
+
+
